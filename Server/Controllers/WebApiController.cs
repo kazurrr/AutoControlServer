@@ -1,30 +1,21 @@
-﻿using Server.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Server.Controllers
 {
     public class WebApiController : ApiController
     {
-        CarDataModel[] cardata = new CarDataModel[]
-        {
-            new CarDataModel { Id = "1", Speed = "20"},
-            new CarDataModel { Id = "2", Speed = "25"},
-            new CarDataModel { Id = "3", Speed = "40"},
-        };
+        CarDatabaseEntities1 db = new CarDatabaseEntities1(); 
 
-        public IEnumerable<CarDataModel> GetAllProducts()
+        public IEnumerable<car> GetAllProducts()
         {
-            return cardata;
+            return db.cars;
         }
 
         public IHttpActionResult GetProduct(int id)
         {
-            var product = cardata.FirstOrDefault((p) => p.Id == id.ToString());
+            var product = db.cars.FirstOrDefault(p => p.CarId == id);
             if (product == null)
             {
                 return NotFound();

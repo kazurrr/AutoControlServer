@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CarDatabaseEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cars" EntityType="CarDatabaseModel.car" />
+    <EntitySet Name="details" EntityType="CarDatabaseModel.detail" />
+    <EntitySet Name="Errors" EntityType="CarDatabaseModel.Error" />
+    <AssociationSet Name="FK_details_0_0" Association="CarDatabaseModel.FK_details_0_0">
+      <End Role="car" EntitySet="cars" />
+      <End Role="detail" EntitySet="details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Errors_0_0" Association="CarDatabaseModel.FK_Errors_0_0">
+      <End Role="car" EntitySet="cars" />
+      <End Role="Error" EntitySet="Errors" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="car">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VIN" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="Brand" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="details" Relationship="CarDatabaseModel.FK_details_0_0" FromRole="car" ToRole="detail" />
+    <NavigationProperty Name="Errors" Relationship="CarDatabaseModel.FK_Errors_0_0" FromRole="car" ToRole="Error" />
+  </EntityType>
+  <EntityType Name="detail">
+    <Key>
+      <PropertyRef Name="DetailId" />
+    </Key>
+    <Property Name="DetailId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarId" Type="Int64" Nullable="false" />
+    <Property Name="Speed" Type="Double" Nullable="false" />
+    <Property Name="Rpm" Type="Double" Nullable="false" />
+    <Property Name="EngineLoad" Type="Double" Nullable="false" />
+    <Property Name="Voltage" Type="Double" Nullable="false" />
+    <Property Name="Lon" Type="Double" Nullable="false" />
+    <Property Name="Lat" Type="Double" Nullable="false" />
+    <NavigationProperty Name="car" Relationship="CarDatabaseModel.FK_details_0_0" FromRole="detail" ToRole="car" />
+  </EntityType>
+  <EntityType Name="Error">
+    <Key>
+      <PropertyRef Name="ErrorId" />
+    </Key>
+    <Property Name="ErrorId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarId" Type="Int64" />
+    <Property Name="ErrorCode" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="ErrorString" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="car" Relationship="CarDatabaseModel.FK_Errors_0_0" FromRole="Error" ToRole="car" />
+  </EntityType>
+  <Association Name="FK_details_0_0">
+    <End Type="CarDatabaseModel.car" Role="car" Multiplicity="1" />
+    <End Type="CarDatabaseModel.detail" Role="detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="car">
+        <PropertyRef Name="CarId" />
+      </Principal>
+      <Dependent Role="detail">
+        <PropertyRef Name="CarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Errors_0_0">
+    <End Type="CarDatabaseModel.car" Role="car" Multiplicity="0..1" />
+    <End Type="CarDatabaseModel.Error" Role="Error" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="car">
+        <PropertyRef Name="CarId" />
+      </Principal>
+      <Dependent Role="Error">
+        <PropertyRef Name="CarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarDatabaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\Piotr\Documents\GitHub\inzynierka\AutoControlServer\Server\CarDatabase.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cars">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VIN" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Brand" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="Model" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="details">
+    <Key>
+      <PropertyRef Name="DetailId" />
+    </Key>
+    <Property Name="DetailId" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarId" Type="integer" Nullable="false" />
+    <Property Name="Speed" Type="real" Nullable="false" />
+    <Property Name="Rpm" Type="real" Nullable="false" />
+    <Property Name="EngineLoad" Type="real" Nullable="false" />
+    <Property Name="Voltage" Type="real" Nullable="false" />
+    <Property Name="Lon" Type="real" Nullable="false" />
+    <Property Name="Lat" Type="real" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Errors">
+    <Key>
+      <PropertyRef Name="ErrorId" />
+    </Key>
+    <Property Name="ErrorId" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarId" Type="integer" />
+    <Property Name="ErrorCode" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="ErrorString" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <Association Name="FK_details_0_0">
+    <End Role="cars" Type="Self.cars" Multiplicity="1" />
+    <End Role="details" Type="Self.details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cars">
+        <PropertyRef Name="CarId" />
+      </Principal>
+      <Dependent Role="details">
+        <PropertyRef Name="CarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Errors_0_0">
+    <End Role="cars" Type="Self.cars" Multiplicity="0..1" />
+    <End Role="Errors" Type="Self.Errors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cars">
+        <PropertyRef Name="CarId" />
+      </Principal>
+      <Dependent Role="Errors">
+        <PropertyRef Name="CarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarDatabaseModelStoreContainer">
+    <EntitySet Name="cars" EntityType="Self.cars" store:Type="Tables" />
+    <EntitySet Name="details" EntityType="Self.details" store:Type="Tables" />
+    <EntitySet Name="Errors" EntityType="Self.Errors" store:Type="Tables" />
+    <AssociationSet Name="FK_details_0_0" Association="Self.FK_details_0_0">
+      <End Role="cars" EntitySet="cars" />
+      <End Role="details" EntitySet="details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Errors_0_0" Association="Self.FK_Errors_0_0">
+      <End Role="cars" EntitySet="cars" />
+      <End Role="Errors" EntitySet="Errors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
