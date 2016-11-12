@@ -9,9 +9,10 @@
 
 namespace Server
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class detail
     {
         public long DetailId { get; set; }
@@ -23,6 +24,7 @@ namespace Server
         public double Lon { get; set; }
         public double Lat { get; set; }
     
+        [JsonIgnore]
         public virtual car car { get; set; }
     }
 }

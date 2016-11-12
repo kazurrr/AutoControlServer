@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace Server.Controllers
 {
-    public class WebApiController : ApiController
+    public class CarsController : ApiController
     {
         CarDatabaseEntities1 db = new CarDatabaseEntities1(); 
 
@@ -21,6 +25,13 @@ namespace Server.Controllers
                 return NotFound();
             }
             return Ok(product);
+        }
+
+        [System.Web.Http.HttpPost]
+        public void PostProduct(car lol)
+        {
+            db.cars.Add(lol);
+            db.SaveChanges();
         }
     }
 }

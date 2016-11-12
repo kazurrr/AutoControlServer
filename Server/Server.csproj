@@ -188,7 +188,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CarEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\WebApiController.cs" />
+    <Compile Include="Controllers\DetailsController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
+    <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="detail.cs">
       <DependentUpon>CarEntities.tt</DependentUpon>
     </Compile>
@@ -227,6 +229,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Default\" />
+    <Folder Include="Views\Details\" />
+    <Folder Include="Views\Errors\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

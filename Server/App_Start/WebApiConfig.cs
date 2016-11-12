@@ -16,6 +16,7 @@ namespace Server
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
+                //routeTemplate: "api/{controller}/{action}/{id}", todo
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );

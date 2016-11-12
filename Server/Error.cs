@@ -9,9 +9,10 @@
 
 namespace Server
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Error
     {
         public long ErrorId { get; set; }
@@ -19,6 +20,7 @@ namespace Server
         public string ErrorCode { get; set; }
         public string ErrorString { get; set; }
     
+        [JsonIgnore]
         public virtual car car { get; set; }
     }
 }

@@ -23,6 +23,7 @@ namespace Server
 
             HttpConfiguration config = GlobalConfiguration.Configuration;
 
+            //prevent reference loop
             config.Formatters.JsonFormatter
                         .SerializerSettings
                         .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
