@@ -28,10 +28,17 @@ namespace Server.Controllers
         }
 
         [System.Web.Http.HttpPost]
-        public void PostProduct(car lol)
+        public IHttpActionResult PostProduct([FromBody]car carData)
         {
-            db.cars.Add(lol);
+            if (carData == null)
+            {
+                return BadRequest();
+            }
+
+            db.cars.Add(carData);
             db.SaveChanges();
+
+            return Created("post", carData);
         }
     }
 }
