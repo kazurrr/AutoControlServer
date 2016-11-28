@@ -19,8 +19,9 @@ namespace Server
         public Nullable<long> CarId { get; set; }
         public string ErrorCode { get; set; }
         public string ErrorString { get; set; }
-    
+        public Nullable<System.DateTime> CreateDate { get; set; }
+
         [JsonIgnore]
-        public virtual car car { get; set; }
+        public virtual Car Car { get; set; }
     }
 }

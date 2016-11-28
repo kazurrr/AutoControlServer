@@ -12,14 +12,14 @@ namespace Server.Controllers
     {
         CarDatabaseEntities1 db = new CarDatabaseEntities1();
 
-        public IEnumerable<detail> GetAllProducts()
+        public IEnumerable<Detail> GetAll()
         {
-            return db.details;
+            return db.Details;
         }
 
-        public IHttpActionResult GetProduct(int id)
+        public IHttpActionResult Get(int id)
         {
-            IEnumerable<detail> product = db.details.Where(p => p.CarId == id);
+            IEnumerable<Detail> product = db.Details.Where(p => p.CarId == id);
             if (product == null)
             {
                 return NotFound();
@@ -27,23 +27,45 @@ namespace Server.Controllers
             return Ok(product);
         }
 
-        //public IHttpActionResult GetProduct1(String id)
-        //{
-        //    Debug.WriteLine("KOKOS " + id);
+        public IHttpActionResult GetLast()
+        {
+            Detail product = db.Details.OrderByDescending(p => p.CarId).FirstOrDefault();
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
+        }
 
-        //    IEnumerable<detail> product = db.details.Where(p => p.CarId == 1);
-        //    if (product == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return Ok(product);
-        //}
+        public IHttpActionResult GetLastDetailForEachCar()
+        {
+            IEnumerable<Car> cars = db.Cars.Distinct();
+            List<Detail> details = new List<Detail>();
+            Detail temp;
+            foreach (var car in cars)
+            {
+                temp = db.Details.Where(p => p.CarId == car.CarId).OrderByDescending(p => p.DetailId).FirstOrDefault();
+                if (temp != null)
+                {
+                    details.Add(temp);
+                }
+            }
+
+            if (details == null)
+            {
+                return NotFound();
+            }
+            return Ok(details);
+        }
+
 
         [System.Web.Http.HttpPost]
-        public void PostProduct(detail lol)
+        public void Post(Detail lol)
         {
-            db.details.Add(lol);
+            lol.CreateDate = DateTime.Now;
+            db.Details.Add(lol);
             db.SaveChanges();
         }
+
     }
 }

@@ -13,12 +13,12 @@ namespace Server
     using System;
     using System.Collections.Generic;
 
-    public partial class car
+    public partial class Car
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public car()
+        public Car()
         {
-            this.details = new HashSet<detail>();
+            this.Details = new HashSet<Detail>();
             this.Errors = new HashSet<Error>();
         }
     
@@ -26,10 +26,11 @@ namespace Server
         public string VIN { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
-        public virtual ICollection<detail> details { get; set; }
+        public virtual ICollection<Detail> Details { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
         public virtual ICollection<Error> Errors { get; set; }

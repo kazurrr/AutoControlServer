@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9ef8c110159447a0a5bf9c49cb60cad7" Name="Diagram1">
-        <EntityTypeShape EntityType="CarDatabaseModel.car" Width="1.5" PointX="2.875" PointY="0.75" />
-        <EntityTypeShape EntityType="CarDatabaseModel.detail" Width="1.5" PointX="5.625" PointY="0.625" />
-        <EntityTypeShape EntityType="CarDatabaseModel.Error" Width="1.5" PointX="0.5" PointY="0.75" />
-        <AssociationConnector Association="CarDatabaseModel.FK_details_0_0" />
+        <EntityTypeShape EntityType="CarDatabaseModel.Car" Width="1.5" PointX="5" PointY="1.375" />
+        <EntityTypeShape EntityType="CarDatabaseModel.Detail" Width="1.5" PointX="7.25" PointY="1.125" />
+        <EntityTypeShape EntityType="CarDatabaseModel.Error" Width="1.5" PointX="2.125" PointY="1.375" />
+        <AssociationConnector Association="CarDatabaseModel.FK_Details_0_0" />
         <AssociationConnector Association="CarDatabaseModel.FK_Errors_0_0" />
       </Diagram>
     </edmx:Diagrams>

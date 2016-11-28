@@ -13,18 +13,19 @@ namespace Server
     using System;
     using System.Collections.Generic;
 
-    public partial class detail
+    public partial class Detail
     {
         public long DetailId { get; set; }
-        public long CarId { get; set; }
-        public double Speed { get; set; }
-        public double Rpm { get; set; }
-        public double EngineLoad { get; set; }
-        public double Voltage { get; set; }
-        public double Lon { get; set; }
-        public double Lat { get; set; }
-    
+        public Nullable<long> CarId { get; set; }
+        public Nullable<double> Speed { get; set; }
+        public Nullable<double> Rpm { get; set; }
+        public Nullable<double> EngineLoad { get; set; }
+        public Nullable<double> Voltage { get; set; }
+        public Nullable<double> Lon { get; set; }
+        public Nullable<double> Lat { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
+
         [JsonIgnore]
-        public virtual car car { get; set; }
+        public virtual Car Car { get; set; }
     }
 }

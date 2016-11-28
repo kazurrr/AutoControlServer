@@ -110,7 +110,6 @@ C:\Users\Piotr\Documents\GitHub\inzynierka\AutoControlServer\Server\bin\EntityFr
 C:\Users\Piotr\Documents\GitHub\inzynierka\AutoControlServer\Server\bin\EntityFramework.SqlServer.dll
 C:\Users\Piotr\Documents\GitHub\inzynierka\AutoControlServer\Server\bin\System.Data.SQLite.dll
 C:\Users\Piotr\Documents\GitHub\inzynierka\AutoControlServer\Server\bin\System.Data.SQLite.EF6.dll
-C:\Users\Piotr\Documents\GitHub\inzynierka\AutoControlServer\Server\bin\System.Data.SQLite.Linq.dll
 C:\Users\Piotr\Documents\GitHub\inzynierka\AutoControlServer\Server\bin\EntityFramework.xml
 C:\Users\Piotr\Documents\GitHub\inzynierka\AutoControlServer\Server\bin\EntityFramework.SqlServer.xml
 C:\Users\Piotr\Documents\GitHub\inzynierka\AutoControlServer\Server\bin\System.Data.SQLite.xml

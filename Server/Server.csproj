@@ -92,10 +92,6 @@
       <HintPath>..\packages\System.Data.SQLite.EF6.1.0.98.1\lib\net451\System.Data.SQLite.EF6.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Data.SQLite.Linq, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\System.Data.SQLite\2012\bin\System.Data.SQLite.Linq.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -172,7 +168,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="car.cs">
+    <Compile Include="Car.cs">
       <DependentUpon>CarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CarEntities.Context.cs">
@@ -193,7 +189,7 @@
     <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
-    <Compile Include="detail.cs">
+    <Compile Include="Detail.cs">
       <DependentUpon>CarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Error.cs">
@@ -236,6 +232,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

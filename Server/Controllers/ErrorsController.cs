@@ -11,14 +11,24 @@ namespace Server.Controllers
     {
         CarDatabaseEntities1 db = new CarDatabaseEntities1();
 
-        public IEnumerable<Error> GetAllProducts()
+        public IEnumerable<Error> GetAll()
         {
             return db.Errors;
         }
 
-        public IHttpActionResult GetProduct(int id)
+        public IHttpActionResult Get(int id)
         {
-            IEnumerable<Error> product = db.Errors.Where(p => p.CarId == id);
+            Error product = db.Errors.FirstOrDefault(p => p.CarId == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
+        }
+
+        public IHttpActionResult GetLast()
+        {
+            Error product = db.Errors.OrderByDescending(p => p.CarId).FirstOrDefault();
             if (product == null)
             {
                 return NotFound();
@@ -27,7 +37,7 @@ namespace Server.Controllers
         }
 
         [System.Web.Http.HttpPost]
-        public void PostProduct(Error lol)
+        public void Post(Error lol)
         {
             db.Errors.Add(lol);
             db.SaveChanges();

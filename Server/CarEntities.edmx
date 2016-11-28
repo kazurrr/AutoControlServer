@@ -4,8 +4,8 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CarDatabaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=|DataDirectory|\..\CarDatabase.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="cars">
+    <Schema Namespace="CarDatabaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\Piotr\Documents\GitHub\inzynierka\AutoControlServer\Server\CarDatabase.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cars">
           <Key>
             <PropertyRef Name="CarId" />
           </Key>
@@ -13,19 +13,21 @@
           <Property Name="VIN" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Brand" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Model" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="CreateDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="details">
+        <EntityType Name="Details">
           <Key>
             <PropertyRef Name="DetailId" />
           </Key>
           <Property Name="DetailId" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CarId" Type="integer" Nullable="false" />
-          <Property Name="Speed" Type="real" Nullable="false" />
-          <Property Name="Rpm" Type="real" Nullable="false" />
-          <Property Name="EngineLoad" Type="real" Nullable="false" />
-          <Property Name="Voltage" Type="real" Nullable="false" />
-          <Property Name="Lon" Type="real" Nullable="false" />
-          <Property Name="Lat" Type="real" Nullable="false" />
+          <Property Name="CarId" Type="integer" />
+          <Property Name="Speed" Type="real" />
+          <Property Name="Rpm" Type="real" />
+          <Property Name="EngineLoad" Type="real" />
+          <Property Name="Voltage" Type="real" />
+          <Property Name="Lon" Type="real" />
+          <Property Name="Lat" Type="real" />
+          <Property Name="CreateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Errors">
           <Key>
@@ -35,24 +37,25 @@
           <Property Name="CarId" Type="integer" />
           <Property Name="ErrorCode" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ErrorString" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="CreateDate" Type="datetime" />
         </EntityType>
-        <Association Name="FK_details_0_0">
-          <End Role="cars" Type="Self.cars" Multiplicity="1" />
-          <End Role="details" Type="Self.details" Multiplicity="*" />
+        <Association Name="FK_Details_0_0">
+          <End Role="Cars" Type="Self.Cars" Multiplicity="0..1" />
+          <End Role="Details" Type="Self.Details" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="cars">
+            <Principal Role="Cars">
               <PropertyRef Name="CarId" />
             </Principal>
-            <Dependent Role="details">
+            <Dependent Role="Details">
               <PropertyRef Name="CarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Errors_0_0">
-          <End Role="cars" Type="Self.cars" Multiplicity="0..1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="0..1" />
           <End Role="Errors" Type="Self.Errors" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="cars">
+            <Principal Role="Cars">
               <PropertyRef Name="CarId" />
             </Principal>
             <Dependent Role="Errors">
@@ -61,15 +64,15 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CarDatabaseModelStoreContainer">
-          <EntitySet Name="cars" EntityType="Self.cars" store:Type="Tables" />
-          <EntitySet Name="details" EntityType="Self.details" store:Type="Tables" />
+          <EntitySet Name="Cars" EntityType="Self.Cars" store:Type="Tables" />
+          <EntitySet Name="Details" EntityType="Self.Details" store:Type="Tables" />
           <EntitySet Name="Errors" EntityType="Self.Errors" store:Type="Tables" />
-          <AssociationSet Name="FK_details_0_0" Association="Self.FK_details_0_0">
-            <End Role="cars" EntitySet="cars" />
-            <End Role="details" EntitySet="details" />
+          <AssociationSet Name="FK_Details_0_0" Association="Self.FK_Details_0_0">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Details" EntitySet="Details" />
           </AssociationSet>
           <AssociationSet Name="FK_Errors_0_0" Association="Self.FK_Errors_0_0">
-            <End Role="cars" EntitySet="cars" />
+            <End Role="Cars" EntitySet="Cars" />
             <End Role="Errors" EntitySet="Errors" />
           </AssociationSet>
         </EntityContainer>
@@ -78,19 +81,19 @@
     <edmx:ConceptualModels>
       <Schema Namespace="CarDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="CarDatabaseEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="cars" EntityType="CarDatabaseModel.car" />
-          <EntitySet Name="details" EntityType="CarDatabaseModel.detail" />
+          <EntitySet Name="Cars" EntityType="CarDatabaseModel.Car" />
+          <EntitySet Name="Details" EntityType="CarDatabaseModel.Detail" />
           <EntitySet Name="Errors" EntityType="CarDatabaseModel.Error" />
-          <AssociationSet Name="FK_details_0_0" Association="CarDatabaseModel.FK_details_0_0">
-            <End Role="car" EntitySet="cars" />
-            <End Role="detail" EntitySet="details" />
+          <AssociationSet Name="FK_Details_0_0" Association="CarDatabaseModel.FK_Details_0_0">
+            <End Role="Car" EntitySet="Cars" />
+            <End Role="Detail" EntitySet="Details" />
           </AssociationSet>
           <AssociationSet Name="FK_Errors_0_0" Association="CarDatabaseModel.FK_Errors_0_0">
-            <End Role="car" EntitySet="cars" />
+            <End Role="Car" EntitySet="Cars" />
             <End Role="Error" EntitySet="Errors" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="car">
+        <EntityType Name="Car">
           <Key>
             <PropertyRef Name="CarId" />
           </Key>
@@ -98,22 +101,24 @@
           <Property Name="VIN" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Brand" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Model" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="details" Relationship="CarDatabaseModel.FK_details_0_0" FromRole="car" ToRole="detail" />
-          <NavigationProperty Name="Errors" Relationship="CarDatabaseModel.FK_Errors_0_0" FromRole="car" ToRole="Error" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <NavigationProperty Name="Details" Relationship="CarDatabaseModel.FK_Details_0_0" FromRole="Car" ToRole="Detail" />
+          <NavigationProperty Name="Errors" Relationship="CarDatabaseModel.FK_Errors_0_0" FromRole="Car" ToRole="Error" />
         </EntityType>
-        <EntityType Name="detail">
+        <EntityType Name="Detail">
           <Key>
             <PropertyRef Name="DetailId" />
           </Key>
           <Property Name="DetailId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CarId" Type="Int64" Nullable="false" />
-          <Property Name="Speed" Type="Double" Nullable="false" />
-          <Property Name="Rpm" Type="Double" Nullable="false" />
-          <Property Name="EngineLoad" Type="Double" Nullable="false" />
-          <Property Name="Voltage" Type="Double" Nullable="false" />
-          <Property Name="Lon" Type="Double" Nullable="false" />
-          <Property Name="Lat" Type="Double" Nullable="false" />
-          <NavigationProperty Name="car" Relationship="CarDatabaseModel.FK_details_0_0" FromRole="detail" ToRole="car" />
+          <Property Name="CarId" Type="Int64" />
+          <Property Name="Speed" Type="Double" />
+          <Property Name="Rpm" Type="Double" />
+          <Property Name="EngineLoad" Type="Double" />
+          <Property Name="Voltage" Type="Double" />
+          <Property Name="Lon" Type="Double" />
+          <Property Name="Lat" Type="Double" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <NavigationProperty Name="Car" Relationship="CarDatabaseModel.FK_Details_0_0" FromRole="Detail" ToRole="Car" />
         </EntityType>
         <EntityType Name="Error">
           <Key>
@@ -123,25 +128,26 @@
           <Property Name="CarId" Type="Int64" />
           <Property Name="ErrorCode" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ErrorString" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="car" Relationship="CarDatabaseModel.FK_Errors_0_0" FromRole="Error" ToRole="car" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <NavigationProperty Name="Car" Relationship="CarDatabaseModel.FK_Errors_0_0" FromRole="Error" ToRole="Car" />
         </EntityType>
-        <Association Name="FK_details_0_0">
-          <End Type="CarDatabaseModel.car" Role="car" Multiplicity="1" />
-          <End Type="CarDatabaseModel.detail" Role="detail" Multiplicity="*" />
+        <Association Name="FK_Details_0_0">
+          <End Type="CarDatabaseModel.Car" Role="Car" Multiplicity="0..1" />
+          <End Type="CarDatabaseModel.Detail" Role="Detail" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="car">
+            <Principal Role="Car">
               <PropertyRef Name="CarId" />
             </Principal>
-            <Dependent Role="detail">
+            <Dependent Role="Detail">
               <PropertyRef Name="CarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Errors_0_0">
-          <End Type="CarDatabaseModel.car" Role="car" Multiplicity="0..1" />
+          <End Type="CarDatabaseModel.Car" Role="Car" Multiplicity="0..1" />
           <End Type="CarDatabaseModel.Error" Role="Error" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="car">
+            <Principal Role="Car">
               <PropertyRef Name="CarId" />
             </Principal>
             <Dependent Role="Error">
@@ -155,9 +161,10 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CarDatabaseModelStoreContainer" CdmEntityContainer="CarDatabaseEntities1">
-          <EntitySetMapping Name="cars">
-            <EntityTypeMapping TypeName="CarDatabaseModel.car">
-              <MappingFragment StoreEntitySet="cars">
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="CarDatabaseModel.Car">
+              <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="Brand" ColumnName="Brand" />
                 <ScalarProperty Name="VIN" ColumnName="VIN" />
@@ -165,9 +172,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="details">
-            <EntityTypeMapping TypeName="CarDatabaseModel.detail">
-              <MappingFragment StoreEntitySet="details">
+          <EntitySetMapping Name="Details">
+            <EntityTypeMapping TypeName="CarDatabaseModel.Detail">
+              <MappingFragment StoreEntitySet="Details">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Lat" ColumnName="Lat" />
                 <ScalarProperty Name="Lon" ColumnName="Lon" />
                 <ScalarProperty Name="Voltage" ColumnName="Voltage" />
@@ -182,6 +190,7 @@
           <EntitySetMapping Name="Errors">
             <EntityTypeMapping TypeName="CarDatabaseModel.Error">
               <MappingFragment StoreEntitySet="Errors">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="ErrorString" ColumnName="ErrorString" />
                 <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />

@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="CarDatabaseModelStoreContainer" CdmEntityContainer="CarDatabaseEntities1">
-    <EntitySetMapping Name="cars">
-      <EntityTypeMapping TypeName="CarDatabaseModel.car">
-        <MappingFragment StoreEntitySet="cars">
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="CarDatabaseModel.Car">
+        <MappingFragment StoreEntitySet="Cars">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
           <ScalarProperty Name="Model" ColumnName="Model" />
           <ScalarProperty Name="Brand" ColumnName="Brand" />
           <ScalarProperty Name="VIN" ColumnName="VIN" />
@@ -11,9 +12,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="details">
-      <EntityTypeMapping TypeName="CarDatabaseModel.detail">
-        <MappingFragment StoreEntitySet="details">
+    <EntitySetMapping Name="Details">
+      <EntityTypeMapping TypeName="CarDatabaseModel.Detail">
+        <MappingFragment StoreEntitySet="Details">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
           <ScalarProperty Name="Lat" ColumnName="Lat" />
           <ScalarProperty Name="Lon" ColumnName="Lon" />
           <ScalarProperty Name="Voltage" ColumnName="Voltage" />
@@ -28,6 +30,7 @@
     <EntitySetMapping Name="Errors">
       <EntityTypeMapping TypeName="CarDatabaseModel.Error">
         <MappingFragment StoreEntitySet="Errors">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
           <ScalarProperty Name="ErrorString" ColumnName="ErrorString" />
           <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
           <ScalarProperty Name="CarId" ColumnName="CarId" />
