@@ -1,6 +1,6 @@
 # AutoControlServer
 
-Car in DB:
+<b>Car in DB:</b>
 
 CarId</br>
 VIN</br>
@@ -8,7 +8,7 @@ Brand</br>
 Model</br>
 CreateDate</br>
 
-CarsController:
+<b>CarsController:</b>
 
 [GET] </br>
 /api/cars/getall - return all cars </br>
@@ -28,7 +28,7 @@ CarsController:
     CarId is autoincrement</br>
     CreateDate is added on REST (todo)</br>
     
-Error in DB:
+<b>Error in DB:</b>
 
 ErrorId</br>
 CarId</br>
@@ -36,7 +36,7 @@ ErrorCode</br>
 ErrorString</br>
 CreateDate</br>
 
-ErrorsController:
+<b>ErrorsController:</b>
 
 [GET]</br>
 /api/errors/getall - return all errors</br>
@@ -56,7 +56,7 @@ ErrorsController:
     ErrorId is autoincrement</br>
     CreateDate is added on REST (todo)</br>
     
-Detail in DB:
+<b>Detail in DB:</b>
 
 DetailId</br>
 CarId</br>
@@ -68,7 +68,7 @@ Lon</br>
 Lat</br>
 CreateDate</br>
 
-DetailssController:
+<b>DetailsController:</b>
 
 [GET]</br>
 /api/details/getall - return all details</br>
