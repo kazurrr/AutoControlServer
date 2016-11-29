@@ -1,0 +1,23 @@
+﻿@{
+    //Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        @foreach (var item in ViewBag.Cars)
+        {
+            <span> @item.CarId - </span>
+            <span> @item.Brand - </span>
+            <span> @item.Model </span>
+            <br/>
+        }
+    </div>
+</body>
+</html>

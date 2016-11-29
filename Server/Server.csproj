@@ -189,6 +189,7 @@
     <Compile Include="Controllers\DetailsController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Detail.cs">
       <DependentUpon>CarEntities.tt</DependentUpon>
     </Compile>
@@ -216,7 +217,8 @@
     <Content Include="CarDatabase.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\asd.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -230,6 +232,7 @@
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Details\" />
     <Folder Include="Views\Errors\" />
+    <Folder Include="Views\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
