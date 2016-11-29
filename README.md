@@ -16,7 +16,7 @@ CreateDate</br>
 /api/cars/getlast - return last added car (sort by carId)</br>
 
 [POST]</br>
-/api/cars/postproduct - add new car to db (todo: change name to post)</br>
+/api/cars/postproduct - add new car to db</br>
   header: </br>
     Content-Type application/json</br>
   body example:</br>
@@ -26,7 +26,7 @@ CreateDate</br>
 		  "VIN": "198219821"</br>
     }</br>
     CarId is autoincrement</br>
-    CreateDate is added on REST (todo)</br>
+    CreateDate is added on REST</br>
     
 <b>Error in DB:</b>
 
@@ -40,8 +40,8 @@ CreateDate</br>
 
 [GET]</br>
 /api/errors/getall - return all errors</br>
-/api/errors/get/id - return first error for car with "id" (todo: return all errors for car with "id")</br>
-/api/errors/getlast - todo</br>
+/api/errors/get/id - return all errors for car with "id"</br>
+/api/errors/getlast/id - return last added error for car with "id"</br>
 
 [POST]</br>
 /api/cars/post - add new error to db</br>
@@ -54,7 +54,7 @@ CreateDate</br>
 		  "ErrorString": "Blad"</br>
     }</br>
     ErrorId is autoincrement</br>
-    CreateDate is added on REST (todo)</br>
+    CreateDate is added on REST</br>
     
 <b>Detail in DB:</b>
 
@@ -72,8 +72,8 @@ CreateDate</br>
 
 [GET]</br>
 /api/details/getall - return all details</br>
-/api/details/get/id - return first detail for car with "id" (todo: return all details for car with "id")</br>
-/api/details/getlast - todo</br>
+/api/details/get/id - return all details for car with "id"</br>
+/api/details/getlast/id - return last added detail for car with "id"</br>
 /api/details/getlastdetailforeachcar - return last added detail for each car in DB</br>
 
 [POST]</br>
