@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -38,8 +39,9 @@ namespace Server.Controllers
         }
 
         [System.Web.Http.HttpPost]
-        public void PostProduct(Car lol)
+        public void Post(Car lol)
         {
+            lol.CreateDate = DateTime.Now;
             db.Cars.Add(lol);
             db.SaveChanges();
         }

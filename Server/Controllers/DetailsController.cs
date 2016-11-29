@@ -27,9 +27,9 @@ namespace Server.Controllers
             return Ok(product);
         }
 
-        public IHttpActionResult GetLast()
+        public IHttpActionResult GetLast(int id)
         {
-            Detail product = db.Details.OrderByDescending(p => p.CarId).FirstOrDefault();
+            Detail product = db.Details.Where(p => p.CarId == id).OrderByDescending(p => p.DetailId).FirstOrDefault();
             if (product == null)
             {
                 return NotFound();

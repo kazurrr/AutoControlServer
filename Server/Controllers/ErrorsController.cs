@@ -18,7 +18,7 @@ namespace Server.Controllers
 
         public IHttpActionResult Get(int id)
         {
-            Error product = db.Errors.FirstOrDefault(p => p.CarId == id);
+            IEnumerable<Error> product = db.Errors.Where(p => p.CarId == id);
             if (product == null)
             {
                 return NotFound();
@@ -26,9 +26,9 @@ namespace Server.Controllers
             return Ok(product);
         }
 
-        public IHttpActionResult GetLast()
+        public IHttpActionResult GetLast(int id)
         {
-            Error product = db.Errors.OrderByDescending(p => p.CarId).FirstOrDefault();
+            Error product = db.Errors.Where(p => p.CarId == id).OrderByDescending(p => p.ErrorId).FirstOrDefault();
             if (product == null)
             {
                 return NotFound();
@@ -39,6 +39,7 @@ namespace Server.Controllers
         [System.Web.Http.HttpPost]
         public void Post(Error lol)
         {
+            lol.CreateDate = DateTime.Now;
             db.Errors.Add(lol);
             db.SaveChanges();
         }
