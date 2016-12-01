@@ -1,23 +1,145 @@
-﻿@{
-    //Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <title>Admin panel</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
 </head>
 <body>
+    <h1>Cars:</h1>
     <div>
-        @foreach (var item in ViewBag.Cars)
-        {
-            <span> @item.CarId - </span>
-            <span> @item.Brand - </span>
-            <span> @item.Model </span>
-            <br/>
-        }
+        <input type="button" value="Create" onclick="location.href='@Url.Action("Test", "Home")'" />
+        <table>
+            <tr>
+                <th>Car Id</th>
+                <th>VIN</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Create Date</th>
+            </tr>
+
+            @foreach (var item in ViewBag.Cars)
+            {
+                <tr>
+                    <td>
+                        @item.CarId
+                    </td>
+                    <td>
+                        @item.VIN
+                    </td>
+                    <td>
+                        @item.Brand
+                    </td>
+                    <td>
+                        @item.Model
+                    </td>
+                    <td>
+                        @item.CreateDate
+                    </td>
+                </tr>
+            }
+
+            </table>
+</div>
+
+    <h1>Details:</h1>
+    <div>
+        <table>
+            <tr>
+                <th>Car Id</th>
+                <th>Speed</th>
+                <th>Rpm</th>
+                <th>EngineLoad</th>
+                <th>Voltage</th>
+                <th>Lat</th>
+                <th>Lon</th>
+                <th>CreateDate</th>
+            </tr>
+
+            @foreach (var detail in ViewBag.Details)
+            {
+                <tr>
+                    <td>
+                        @detail.CarId
+                    </td>
+                    <td>
+                        @detail.Speed
+                    </td>
+                    <td>
+                        @detail.Rpm
+                    </td>
+                    <td>
+                        @detail.EngineLoad
+                    </td>
+                    <td>
+                        @detail.Voltage
+                    </td>
+                    <td>
+                        @detail.Lat
+                    </td>
+                    <td>
+                        @detail.Lon
+                    </td>
+                    <td>
+                        @detail.CreateDate
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <h1>Errors:</h1>
+        <div>
+            <table>
+                <tr>
+                    <th>Car Id</th>
+                    <th>Error Id</th>
+                    <th>Error Code</th>
+                    <th>Error String</th>
+                    <th>Create Date</th>
+                </tr>
+
+                @foreach (var err in ViewBag.Errors)
+                {
+                    <tr>
+                        <td>
+                            @err.CarId
+                        </td>
+                        <td>
+                            @err.ErrorId
+                        </td>
+                        <td>
+                            @err.ErrorCode
+                        </td>
+                        <td>
+                            @err.ErrorString
+                        </td>
+                        <td>
+                            @err.CreateDate
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
     </div>
 </body>
 </html>
