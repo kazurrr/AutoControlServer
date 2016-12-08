@@ -14,7 +14,6 @@ namespace Server.Controllers
 
         public ActionResult Index()
         {
-            db.Cars.ToList();
             ViewBag.Cars = db.Cars.ToList();
             ViewBag.Details = db.Details.ToList();
             ViewBag.Errors = db.Errors.ToList();
@@ -22,11 +21,64 @@ namespace Server.Controllers
             return View();
         }
 
-        public ActionResult Test(string asd)
+        public ActionResult DeleteCar(int id)
         {
-            int a = 2;
+            var car = db.Cars.FirstOrDefault(c => c.CarId == id);
 
-            return null;
+            if (car != null)
+            {
+                db.Cars.Remove(car);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        public ActionResult DeleteDetail(int id)
+        {
+            var detail = db.Details.FirstOrDefault(c => c.DetailId == id);
+
+            if (detail != null)
+            {
+                db.Details.Remove(detail);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        public ActionResult DeleteError(int id)
+        {
+            var error = db.Errors.FirstOrDefault(c => c.ErrorId == id);
+
+            if (error != null)
+            {
+                db.Errors.Remove(error);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        public ActionResult AddCar(string vin, string brand, string model)
+        {
+            Car car = new Car { VIN = vin, Brand = brand, Model = model };
+
+            car.CreateDate = DateTime.Now;
+
+            db.Cars.Add(car);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

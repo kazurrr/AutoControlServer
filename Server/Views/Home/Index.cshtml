@@ -25,7 +25,6 @@
 <body>
     <h1>Cars:</h1>
     <div>
-        <input type="button" value="Create" onclick="location.href='@Url.Action("Test", "Home")'" />
         <table>
             <tr>
                 <th>Car Id</th>
@@ -33,6 +32,7 @@
                 <th>Brand</th>
                 <th>Model</th>
                 <th>Create Date</th>
+                <th>Action</th>
             </tr>
 
             @foreach (var item in ViewBag.Cars)
@@ -53,10 +53,35 @@
                     <td>
                         @item.CreateDate
                     </td>
+                    <td>
+                        <input type="button" value="Delete" onclick="location.href='@Url.Action("DeleteCar", "Home", new RouteValueDictionary(new { id = @item.CarId }))'" />
+                    </td>                        
                 </tr>
             }
-
-            </table>
+            <tr>
+                @using (Html.BeginForm("AddCar", "Home"))
+                {
+                    <td>
+                        @Html.Label("Add:")
+                    </td>
+                    <td>
+                        @Html.TextBox("VIN")
+                    </td>
+                    <td>
+                        @Html.TextBox("Brand")
+                    </td>
+                    <td>
+                        @Html.TextBox("Model")
+                    </td>
+                    <td>
+                        @Html.Label("-")
+                    </td>
+                    <td>
+                        <input type="submit" value="Add" />
+                    </td>
+                }
+            </tr>
+        </table>
 </div>
 
     <h1>Details:</h1>
@@ -71,6 +96,7 @@
                 <th>Lat</th>
                 <th>Lon</th>
                 <th>CreateDate</th>
+                <th>Delete</th>
             </tr>
 
             @foreach (var detail in ViewBag.Details)
@@ -100,9 +126,11 @@
                     <td>
                         @detail.CreateDate
                     </td>
+                    <td>
+                        <input type="button" value="Delete" onclick="location.href='@Url.Action("DeleteDetail", "Home", new RouteValueDictionary(new { id = @detail.DetailId }))'" />
+                    </td>
                 </tr>
             }
-
         </table>
 
         <h1>Errors:</h1>
@@ -114,6 +142,7 @@
                     <th>Error Code</th>
                     <th>Error String</th>
                     <th>Create Date</th>
+                    <th>Delete</th>
                 </tr>
 
                 @foreach (var err in ViewBag.Errors)
@@ -133,6 +162,9 @@
                         </td>
                         <td>
                             @err.CreateDate
+                        </td>
+                        <td>
+                            <input type="button" value="Delete" onclick="location.href='@Url.Action("DeleteError", "Home", new RouteValueDictionary(new { id = @err.ErrorId }))'" />
                         </td>
                     </tr>
                 }
