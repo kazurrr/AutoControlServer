@@ -14,6 +14,14 @@ namespace Server.Controllers
 
         public ActionResult Index()
         {
+            bool isAuthenticated = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+
+            if (!isAuthenticated)
+            {
+                return RedirectToAction("Index", "Account");
+            }
+
+            ViewBag.User = System.Web.HttpContext.Current.User.Identity.Name;
             ViewBag.Cars = db.Cars.ToList();
             ViewBag.Details = db.Details.ToList();
             ViewBag.Errors = db.Errors.ToList();

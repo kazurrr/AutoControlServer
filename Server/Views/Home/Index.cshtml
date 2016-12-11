@@ -23,6 +23,17 @@
     </style>
 </head>
 <body>
+    <div align="left">
+        <h1>Admin Panel</h1>
+    </div>
+    <div align="right" display="inline">
+        Logged as:
+        <b>
+            @ViewBag.User
+        </b>
+        <br />
+        <input type="button" value="Logout" onclick="location.href='@Url.Action("Logout", "Account")'" />
+    </div>
     <h1>Cars:</h1>
     <div>
         <table>
@@ -36,7 +47,7 @@
             </tr>
 
             @foreach (var item in ViewBag.Cars)
-            {
+        {
                 <tr>
                     <td>
                         @item.CarId
@@ -55,7 +66,7 @@
                     </td>
                     <td>
                         <input type="button" value="Delete" onclick="location.href='@Url.Action("DeleteCar", "Home", new RouteValueDictionary(new { id = @item.CarId }))'" />
-                    </td>                        
+                    </td>
                 </tr>
             }
             <tr>
@@ -82,7 +93,7 @@
                 }
             </tr>
         </table>
-</div>
+    </div>
 
     <h1>Details:</h1>
     <div>
@@ -100,7 +111,7 @@
             </tr>
 
             @foreach (var detail in ViewBag.Details)
-            {
+        {
                 <tr>
                     <td>
                         @detail.CarId
