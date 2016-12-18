@@ -39,11 +39,12 @@ namespace Server.Controllers
         }
 
         [System.Web.Http.HttpPost]
-        public void Post(Car lol)
+        public IHttpActionResult Post(Car lol)
         {
             lol.CreateDate = DateTime.Now;
             db.Cars.Add(lol);
             db.SaveChanges();
+            return Ok("The car has been properly added");
         }
     }
 }
