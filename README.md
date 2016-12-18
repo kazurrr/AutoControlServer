@@ -16,7 +16,7 @@ CreateDate</br>
 /api/cars/getlast - return last added car (sort by carId)</br>
 
 [POST]</br>
-/api/cars/postproduct - add new car to db</br>
+/api/cars/post - add new car to db</br>
   header: </br>
     Content-Type application/json</br>
   body example:</br>
