@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Server.Controllers
 {
+    [AllowCrossSiteJson]
     public class DetailsController : ApiController
     {
         CarDatabaseEntities1 db = new CarDatabaseEntities1();
