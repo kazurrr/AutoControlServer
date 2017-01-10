@@ -67,6 +67,10 @@ autoControl.map = {
 
         },
 
+        resize: function() {
+            google.maps.event.trigger(map, "resize");
+        },
+
         updateCars: function (cars) {
             for (var i = 0; i < cars.length; i++) {
                 var randomPosition = autoControl.settings.jqueryMap.randomPosition[0].checked;

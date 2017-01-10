@@ -36,6 +36,10 @@ autoControl.app = {
                 else
                     elementsToChange[i].style.height = window.innerHeight - navbar_height + "px";
             }
+
+            if (autoControl.map) {
+                autoControl.map.event.resize();
+            }
         },
 
         initGUIModules: function () {
