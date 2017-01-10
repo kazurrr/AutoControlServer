@@ -1,0 +1,74 @@
+[
+  {
+    "CarId": 1,
+    "VIN": "1923102837",
+    "Brand": "Ford",
+    "Model": "Fiesta"
+  },
+  {
+    "CarId": 2,
+    "VIN": "15454644",
+    "Brand": "Honda",
+    "Model": "Acord"
+  },
+  {
+    "CarId": 3,
+    "VIN": "123123123",
+    "Brand": "Opel",
+    "Model": "Vectra"
+  },
+  {
+    "CarId": 4,
+    "VIN": "123123123",
+    "Brand": "Opel",
+    "Model": "Astra"
+  },
+  {
+    "CarId": 5,
+    "VIN": null,
+    "Brand": "Fiesta",
+    "Model": "Ford"
+  },
+  {
+    "CarId": 6,
+    "VIN": null,
+    "Brand": "Marka",
+    "Model": "focus"
+  },
+  {
+    "CarId": 7,
+    "VIN": null,
+    "Brand": "Marka",
+    "Model": "focus"
+  },
+  {
+    "CarId": 8,
+    "VIN": null,
+    "Brand": "Jakaś",
+    "Model": "Marka"
+  },
+  {
+    "CarId": 9,
+    "VIN": "81723981",
+    "Brand": "lol",
+    "Model": "lol2"
+  },
+  {
+    "CarId": 10,
+    "VIN": "81723981",
+    "Brand": "lol",
+    "Model": "lol2"
+  },
+  {
+    "CarId": 11,
+    "VIN": null,
+    "Brand": "Marka",
+    "Model": "Model"
+  },
+  {
+    "CarId": 12,
+    "VIN": "jhaskjdhas",
+    "Brand": "ford",
+    "Model": "focus"
+  }
+]

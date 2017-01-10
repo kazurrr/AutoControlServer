@@ -1,0 +1,45 @@
+[
+  {
+    "ErrorId": 1,
+    "CarId": 1,
+    "ErrorCode": "asd",
+    "ErrorString": "asdasd",
+    "ErrorString": "asdasd",
+    "CreateDate": "2017-01-04T18:23:32.205Z"
+  },
+  {
+    "ErrorId": 3,
+    "CarId": 2,
+    "ErrorCode": "Ac45",
+    "ErrorString": "Lipa",
+    "CreateDate":null
+  },
+  {
+    "ErrorId": 4,
+    "CarId": 3,
+    "ErrorCode": "JD34",
+    "ErrorString": "Kwas",
+    "CreateDate":null
+  },
+  {
+    "ErrorId": 5,
+    "CarId": 4,
+    "ErrorCode": "LD89",
+    "ErrorString": "Nic",
+    "CreateDate":null
+  },
+  {
+    "ErrorId": 6,
+    "CarId": 9,
+    "ErrorCode": "A45",
+    "ErrorString": "jashdlkajsd",
+    "CreateDate":null
+  },
+  {
+    "ErrorId": 7,
+    "CarId": 1,
+    "ErrorCode": "DA45",
+    "ErrorString": "jhakjshdak",
+    "CreateDate":null
+  }
+]

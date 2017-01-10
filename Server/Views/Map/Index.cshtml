@@ -1,0 +1,87 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>AutoControl</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/Resources/css/materialize.min.css" rel="stylesheet" />
+    <link href="~/Resources/css/style.map.css" rel="stylesheet" />
+</head>
+<body>
+
+    <header class="navbar-fixed">
+        <nav id="main-navbar" class="blue-grey darken-2">
+            <!--role="navigation"-->
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="#" class="brand-logo">AutoControl</a>
+
+            </div>
+
+            <div id="header-progress-indeterminate" class="progress" style="margin: 0;">
+                <div class="indeterminate"></div>
+            </div>
+            <div id="header-progress-determinate" class="progress" style="margin: 0; display: none">
+                <div id="header-progress-determinate-bar" class="determinate" style="width: 0%"></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="row no-margin">
+
+        <div id="map-wrapper" class="right col s12 no-padding height-full">
+            <div id="map" class="height-full z-depth-1"></div>
+        </div>
+
+        <div id="content-wrapper" class="left col s12 m5 l4 height-full content-col scroll-content">
+            <ul id="content-main" class="collapsible" data-collapsible="expandable"></ul>
+        </div>
+
+        <div id="error-modal-main" class="modal">
+
+        </div>
+
+    </div>
+
+    <script>autoControl = {};</script>
+    <!-- Load lib!-->
+    <script src="~/Resources/js/jquery-3.1.1.min.js"></script>
+    <script src="~/Resources/js/materialize.min.js"></script>
+
+    <!-- Load controllers!-->
+    <script src="~/Resources/js/controllers/BackEnd.js"></script>
+    <script src="~/Resources/js/controllers/App.js"></script>
+    <script src="~/Resources/js/controllers/Map.js"></script>
+    <script src="~/Resources/js/controllers/CarsInfo.js"></script>
+    <script src="~/Resources/js/controllers/AppSettings.js"></script>
+    <script src="~/Resources/js/controllers/CarsUpdate.js"></script>
+    <script src="~/Resources/js/controllers/ModalWindow.js"></script>
+    <script src="~/Resources/js/controllers/Route.js"></script>
+    <!-- Load models!-->
+    <script src="~/Resources/js/model/Car.js"></script>
+
+    <!-- Load Utils !-->
+    <script src="~/Resources/js/util/MarkerPosition.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $.when($(".button-collapse").sideNav, autoControl.app.event.initModule()).done(function () {
+                autoControl.app.action.hideProgressIndeterminate();
+            });
+        }, 500);
+
+
+    });
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhiBxCyHYRmsnZlEuvNKMxLWPWic2Pb-c&callback=autoControl.map.event.initModule"
+            async defer></script>
+</body>
+</html>

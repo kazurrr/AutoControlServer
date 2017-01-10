@@ -1,0 +1,50 @@
+.no-padding {
+    padding: 0 !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+#map-wrapper {
+    -webkit-transition: width 0.4s; /* Safari */
+    transition: width 0.4s;
+}
+
+#map-wrapper {
+    min-height: 200px;
+}
+
+#map {
+    min-height: 200px;
+    width: 100%;
+}
+
+.scroll-content {
+    overflow: auto;
+}
+
+.btn.small {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 1rem;
+    font-size: 12px;
+}
+
+.route-input-wrapper {
+    margin-bottom: 15px;
+}
+
+.collapsible-body {
+    padding: 15px 10px;
+    background-color: #ffffff;
+}
+
+#content-wrapper {
+    background-color: transparent;
+    position: fixed;
+}
+
+.collapsible-header {
+    border-left: 3px #455a64 solid;
+}
