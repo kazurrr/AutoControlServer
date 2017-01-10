@@ -6,19 +6,19 @@ autoControl.backEnd = {
     url: {
         allCars: function () {
             if (autoControl.settings.jqueryMap.randomPosition[0].checked)
-                return 'Resources/js/testResponses/allCars.json';
+                return '/Resources/js/testResponses/allCars.json';
             else
                 return 'http://91.232.102.190:8080/api/cars/getall';
         },
         errorForCarId: function (carId) {
             if (autoControl.settings.jqueryMap.randomPosition[0].checked)
-                return 'Resources/js/testResponses/allErrors.json';
+                return '/Resources/js/testResponses/allErrors.json';
             else
                 return 'http://91.232.102.190:8080//api/errors/get/id/' + carId;
         },
         lastCarsDetails: function () {
             if (autoControl.settings.jqueryMap.randomPosition[0].checked)
-                return 'Resources/js/testResponses/allDetails.json';
+                return '/Resources/js/testResponses/allDetails.json';
             else
                 return 'http://91.232.102.190:8080/api/details/getlastdetailforeachcar';
         }
