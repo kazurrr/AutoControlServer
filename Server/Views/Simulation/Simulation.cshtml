@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Simulation</title>
+</head>
+<body>
+    <h1>Simulator</h1>
+    <div>
+        <input type="button" value="Start Simulation" onclick="location.href='@Url.Action("StartSimulation", "Simulation")'" />
+        <input type="button" value="Stop Simulation" onclick="location.href='@Url.Action("StopSimulation", "Simulation")'" />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <input type="button" value="Home" onclick="location.href='@Url.Action("Index", "Home")'" />
+    </div>
+</body>
+</html>
