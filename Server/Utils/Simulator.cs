@@ -32,7 +32,15 @@ namespace Server.Utils
         }
         public void StartSimulation()
         {
+            if (SimulationRunning)
+            {
+                StopSimulation();
+            }
+
             SimulationRunning = true;
+
+            simulatorCancellationTokenSource = new CancellationTokenSource();
+            simulatorCancellationToken = simulatorCancellationTokenSource.Token;
 
             Task.Run(() =>
             {
