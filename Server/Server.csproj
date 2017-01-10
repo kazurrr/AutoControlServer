@@ -159,8 +159,48 @@
       <LastGenOutput>CarEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Resources\css\materialize.css" />
+    <Content Include="Resources\css\materialize.min.css" />
+    <Content Include="Resources\css\style.map.css" />
+    <Content Include="Resources\img\car.png" />
+    <Content Include="Resources\js\controllers\App.js" />
+    <Content Include="Resources\js\controllers\AppSettings.js" />
+    <Content Include="Resources\js\controllers\BackEnd.js" />
+    <Content Include="Resources\js\controllers\CarsInfo.js" />
+    <Content Include="Resources\js\controllers\CarsUpdate.js" />
+    <Content Include="Resources\js\controllers\Map.js" />
+    <Content Include="Resources\js\controllers\ModalWindow.js" />
+    <Content Include="Resources\js\controllers\Route.js" />
+    <Content Include="Resources\js\jquery-3.1.1.min.js" />
+    <Content Include="Resources\js\materialize.js" />
+    <Content Include="Resources\js\materialize.min.js" />
+    <Content Include="Resources\js\model\Car.js" />
+    <Content Include="Resources\js\util\MarkerPosition.js" />
     <Content Include="scripts\ai.0.22.19-build00125.js" />
     <Content Include="scripts\ai.0.22.19-build00125.min.js" />
+    <Content Include="Resources\fonts\roboto\Roboto-Bold.eot" />
+    <Content Include="Resources\fonts\roboto\Roboto-Bold.ttf" />
+    <Content Include="Resources\fonts\roboto\Roboto-Bold.woff" />
+    <Content Include="Resources\fonts\roboto\Roboto-Bold.woff2" />
+    <Content Include="Resources\fonts\roboto\Roboto-Light.eot" />
+    <Content Include="Resources\fonts\roboto\Roboto-Light.ttf" />
+    <Content Include="Resources\fonts\roboto\Roboto-Light.woff" />
+    <Content Include="Resources\fonts\roboto\Roboto-Light.woff2" />
+    <Content Include="Resources\fonts\roboto\Roboto-Medium.eot" />
+    <Content Include="Resources\fonts\roboto\Roboto-Medium.ttf" />
+    <Content Include="Resources\fonts\roboto\Roboto-Medium.woff" />
+    <Content Include="Resources\fonts\roboto\Roboto-Medium.woff2" />
+    <Content Include="Resources\fonts\roboto\Roboto-Regular.eot" />
+    <Content Include="Resources\fonts\roboto\Roboto-Regular.ttf" />
+    <Content Include="Resources\fonts\roboto\Roboto-Regular.woff" />
+    <Content Include="Resources\fonts\roboto\Roboto-Regular.woff2" />
+    <Content Include="Resources\fonts\roboto\Roboto-Thin.eot" />
+    <Content Include="Resources\fonts\roboto\Roboto-Thin.ttf" />
+    <Content Include="Resources\fonts\roboto\Roboto-Thin.woff" />
+    <Content Include="Resources\fonts\roboto\Roboto-Thin.woff2" />
+    <Content Include="Resources\js\testResponses\allCars.json" />
+    <Content Include="Resources\js\testResponses\allDetails.json" />
+    <Content Include="Resources\js\testResponses\allErrors.json" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -199,6 +239,7 @@
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Detail.cs">
       <DependentUpon>CarEntities.tt</DependentUpon>
     </Compile>
@@ -208,6 +249,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AllowCrossSiteJsonAttribute.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -231,6 +273,7 @@
     <None Include="Properties\PublishProfiles\asd.pubxml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Map\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
