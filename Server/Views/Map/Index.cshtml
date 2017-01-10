@@ -16,18 +16,29 @@
 <body>
 
     <header class="navbar-fixed">
-        <nav id="main-navbar" class="blue-grey darken-2">
+        <ul id="nav-user-dropdown" class="dropdown-content">
+            @*<li><a href="#!">one</a></li>
+                <li><a href="#!">two</a></li>
+                <li class="divider"></li>*@
+            <li onclick="location.href='@Url.Action("Logout", "Account")'"><a href="#!">Wyloguj</a></li>
+        </ul>
+        <nav class="blue-grey darken-2" id="main-navbar">
             <!--role="navigation"-->
             <div class="nav-wrapper container">
-                <a id="logo-container" href="#" class="brand-logo">AutoControl</a>
+                <a class="brand-logo" id="logo-container" href="#">AutoControl</a>
 
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="active"><a href="#">Mapa</a></li>
+                    <li><a href="@Url.Action("Index", "Home")">Admin Panel</a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="nav-user-dropdown">@ViewBag.User<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
             </div>
 
-            <div id="header-progress-indeterminate" class="progress" style="margin: 0;">
+            <div class="progress" id="header-progress-indeterminate" style="margin: 0px; display: none;">
                 <div class="indeterminate"></div>
             </div>
-            <div id="header-progress-determinate" class="progress" style="margin: 0; display: none">
-                <div id="header-progress-determinate-bar" class="determinate" style="width: 0%"></div>
+            <div class="progress" id="header-progress-determinate" style="margin: 0; display: none">
+                <div class="determinate" id="header-progress-determinate-bar" style="width: 0%"></div>
             </div>
         </nav>
     </header>
