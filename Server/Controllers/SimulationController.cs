@@ -1,12 +1,20 @@
 ﻿using Server.Utils;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Server.Controllers
 {
     public class SimulationController : Controller
     {
+        CarDatabaseEntities1 db = new CarDatabaseEntities1();
+
         public ActionResult Simulation()
         {
+            var sim = Simulator.Instance;
+            ViewBag.IsSimulatorRunning = sim.SimulationRunning;
+
+            ViewBag.Details = db.Details.Where(x => x.CarId == 1).ToList().OrderByDescending(x => x.CreateDate);
+            
             return View();
         }
 
@@ -14,7 +22,9 @@ namespace Server.Controllers
         {
             var sim = Simulator.Instance;
             sim.StartSimulation();
-            return View("Simulation");
+            ViewBag.IsSimulatorRunning = sim.SimulationRunning;
+            ViewBag.Details = db.Details.Where(x => x.CarId == 1).ToList().OrderByDescending(x => x.CreateDate);
+            return RedirectToAction("Simulation");
         }
 
 
@@ -22,7 +32,9 @@ namespace Server.Controllers
         {
             var sim = Simulator.Instance;
             sim.StopSimulation();
-            return View("Simulation");
+            ViewBag.IsSimulatorRunning = sim.SimulationRunning;
+            ViewBag.Details = db.Details.Where(x => x.CarId == 1).ToList().OrderByDescending(x => x.CreateDate);
+            return RedirectToAction("Simulation");
         }
     }
 }

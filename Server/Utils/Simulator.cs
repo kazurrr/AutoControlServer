@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace Server.Utils
 {
@@ -12,6 +10,8 @@ namespace Server.Utils
         private CancellationTokenSource simulatorCancellationTokenSource;
         private CancellationToken simulatorCancellationToken;
         private static Simulator instance;
+
+        public bool SimulationRunning = false;
 
         private Simulator()
         {
@@ -32,6 +32,8 @@ namespace Server.Utils
         }
         public void StartSimulation()
         {
+            SimulationRunning = true;
+
             Task.Run(() =>
             {
                 startSimJob();
@@ -64,15 +66,16 @@ namespace Server.Utils
                 detail.Lat -= 0.0001;
                 detail.Lon -= 0.0001;
                 detail.CreateDate = DateTime.Now;
-
+                
                 db.Details.Add(detail);
                 db.SaveChanges();
-                Thread.Sleep(3000);
+                Thread.Sleep(10 * 1000);
             }
 
         }
         public void StopSimulation()
         {
+            SimulationRunning = false;
             simulatorCancellationTokenSource.Cancel();
         }
     }

@@ -41,6 +41,10 @@
 
         <div align="left">
             <input type="button" value="Simulator" onclick="location.href='@Url.Action("Simulation", "Simulation")'" />
+            @if (ViewBag.IsSimulatorRunning)
+            {
+                <h4 style="color:red">SIMULATOR RUNNING</h4>
+            }
         </div>
 
         <h4>Cars:</h4>

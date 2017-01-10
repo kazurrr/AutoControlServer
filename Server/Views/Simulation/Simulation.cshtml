@@ -4,24 +4,83 @@
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Simulation</title>
+    <meta http-equiv="refresh" content="5" />
 </head>
 <body>
     <h1>Simulator</h1>
     <div>
-        <input type="button" value="Start Simulation" onclick="location.href='@Url.Action("StartSimulation", "Simulation")'" />
-        <input type="button" value="Stop Simulation" onclick="location.href='@Url.Action("StopSimulation", "Simulation")'" />
+        <input type="button" value="Home" onclick="location.href='@Url.Action("Index", "Home")'" />
+        <br/>
+        <br/>
+        @if (ViewBag.IsSimulatorRunning)
+        {
+            <input type="button" disabled="disabled" name="startButton" value="Start Simulation" onclick="location.href='@Url.Action("StartSimulation", "Simulation")'" />
+            <input type="button" name="stopButton" value="Stop Simulation" onclick="location.href='@Url.Action("StopSimulation", "Simulation")'" />
+
+        }
+        else
+        {
+            <input type="button" name="startButton" value="Start Simulation" onclick="location.href='@Url.Action("StartSimulation", "Simulation")'" />
+            <input type="button" disabled="disabled" name="stopButton" value="Stop Simulation" onclick="location.href='@Url.Action("StopSimulation", "Simulation")'" />
+
+        }
         <br />
         <br />
         <br />
         <br />
         <br />
 
-        <input type="button" value="Home" onclick="location.href='@Url.Action("Index", "Home")'" />
-    </div>
+        <h4>Details:</h4>
+        <div>
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>Car Id</th>
+                        <th>Speed</th>
+                        <th>Rpm</th>
+                        <th>EngineLoad</th>
+                        <th>Voltage</th>
+                        <th>Lat</th>
+                        <th>Lon</th>
+                        <th>CreateDate</th>
+                    </tr>
+                </thead>
+
+                @foreach (var detail in ViewBag.Details)
+                {
+                    <tr>
+                        <td>
+                            @detail.CarId
+                        </td>
+                        <td>
+                            @detail.Speed
+                        </td>
+                        <td>
+                            @detail.Rpm
+                        </td>
+                        <td>
+                            @detail.EngineLoad
+                        </td>
+                        <td>
+                            @detail.Voltage
+                        </td>
+                        <td>
+                            @detail.Lat
+                        </td>
+                        <td>
+                            @detail.Lon
+                        </td>
+                        <td>
+                            @detail.CreateDate
+                        </td>
+                    </tr>
+                }
+            </table>
+
+        </div>
 </body>
 </html>

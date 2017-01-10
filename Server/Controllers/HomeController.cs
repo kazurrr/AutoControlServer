@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -25,6 +26,9 @@ namespace Server.Controllers
             ViewBag.Cars = db.Cars.ToList();
             ViewBag.Details = db.Details.ToList();
             ViewBag.Errors = db.Errors.ToList();
+
+            var sim = Simulator.Instance;
+            ViewBag.IsSimulatorRunning = sim.SimulationRunning;
 
             return View();
         }
