@@ -5,19 +5,35 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/Resources/css/materialize.min.css" rel="stylesheet" />
     <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+   
+    <header class="navbar-fixed">
+        <nav class="blue-grey darken-2" id="main-navbar">
+            <!--role="navigation"-->
+            <div class="nav-wrapper container">
+                <a class="brand-logo" id="logo-container" href="#">AutoControl</a>
+            </div>
+            <div class="progress" id="header-progress-indeterminate" style="margin: 0px; display: none;">
+                <div class="indeterminate"></div>
+            </div>
+            <div class="progress" id="header-progress-determinate" style="margin: 0; display: none">
+                <div class="determinate" id="header-progress-determinate-bar" style="width: 0%"></div>
+            </div>
+        </nav>
+    </header>
     
     
     @using (Html.BeginForm()) 
     {
         @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
+
+    <div class="row">
+        <div class="form-horizontal col s12 offset-s3 m4 offset-m4">
             <h4>Admin panel</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -28,7 +44,7 @@
                     @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -36,13 +52,20 @@
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Login" class="btn btn-default" />
                 </div>
             </div>
         </div>
+    </div>
     }
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="~/Resources/js/materialize.min.js"></script>
+
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>
