@@ -71,8 +71,8 @@ namespace Server.Utils
                     return;
                 }
 
-                detail.Lat -= 0.0001;
-                detail.Lon -= 0.0001;
+                detail.Lat += 0.0002;
+                detail.Lon -= 0.0002;
                 detail.CreateDate = DateTime.Now;
                 
                 db.Details.Add(detail);
