@@ -10,6 +10,15 @@ namespace Server.Controllers
 
         public ActionResult Simulation()
         {
+            bool isAuthenticated = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+
+            if (!isAuthenticated)
+            {
+                return RedirectToAction("Index", "Account");
+            }
+
+            ViewBag.User = System.Web.HttpContext.Current.User.Identity.Name;
+
             var sim = Simulator.Instance;
             ViewBag.IsSimulatorRunning = sim.SimulationRunning;
 
@@ -20,6 +29,15 @@ namespace Server.Controllers
 
         public ActionResult StartSimulation()
         {
+            bool isAuthenticated = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+
+            if (!isAuthenticated)
+            {
+                return RedirectToAction("Index", "Account");
+            }
+
+            ViewBag.User = System.Web.HttpContext.Current.User.Identity.Name;
+
             var sim = Simulator.Instance;
             sim.StartSimulation();
             ViewBag.IsSimulatorRunning = sim.SimulationRunning;
@@ -30,6 +48,15 @@ namespace Server.Controllers
 
         public ActionResult StopSimulation()
         {
+            bool isAuthenticated = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+
+            if (!isAuthenticated)
+            {
+                return RedirectToAction("Index", "Account");
+            }
+
+            ViewBag.User = System.Web.HttpContext.Current.User.Identity.Name;
+
             var sim = Simulator.Instance;
             sim.StopSimulation();
             ViewBag.IsSimulatorRunning = sim.SimulationRunning;

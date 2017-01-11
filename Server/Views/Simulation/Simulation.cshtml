@@ -1,38 +1,74 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
     <title>Simulation</title>
     <meta http-equiv="refresh" content="5" />
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/Resources/css/materialize.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
-    <h1>Simulator</h1>
-    <div>
-        <input type="button" value="Home" onclick="location.href='@Url.Action("Index", "Home")'" />
-        <br/>
-        <br/>
-        @if (ViewBag.IsSimulatorRunning)
-        {
-            <input type="button" disabled="disabled" name="startButton" value="Start Simulation" onclick="location.href='@Url.Action("StartSimulation", "Simulation")'" />
-            <input type="button" name="stopButton" value="Stop Simulation" onclick="location.href='@Url.Action("StopSimulation", "Simulation")'" />
+    <div align="left">
 
-        }
-        else
-        {
-            <input type="button" name="startButton" value="Start Simulation" onclick="location.href='@Url.Action("StartSimulation", "Simulation")'" />
-            <input type="button" disabled="disabled" name="stopButton" value="Stop Simulation" onclick="location.href='@Url.Action("StopSimulation", "Simulation")'" />
+    </div>
 
-        }
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+    <header class="navbar-fixed">
+        <ul id="nav-user-dropdown" class="dropdown-content">
+            @*<li><a href="#!">one</a></li>
+                <li><a href="#!">two</a></li>
+                <li class="divider"></li>*@
+            <li onclick="location.href='@Url.Action("Logout", "Account")'"><a href="#!">Wyloguj</a></li>
+        </ul>
+        <nav class="blue-grey darken-2" id="main-navbar">
+            <!--role="navigation"-->
+            <div class="nav-wrapper container">
+                <a class="brand-logo" id="logo-container" href="#">AutoControl</a>
+
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="@Url.Action("Index", "Map")">Mapa</a></li>
+                    <li><a href="@Url.Action("Index", "Home")">Admin Panel</a></li>
+                    <li class="active"><a href="#">Symulator</a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="nav-user-dropdown">@ViewBag.User<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+
+            <div class="progress" id="header-progress-indeterminate" style="margin: 0px; display: none;">
+                <div class="indeterminate"></div>
+            </div>
+            <div class="progress" id="header-progress-determinate" style="margin: 0; display: none">
+                <div class="determinate" id="header-progress-determinate-bar" style="width: 0%"></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <div class="card-title">
+                            Symulator
+                            @if (ViewBag.IsSimulatorRunning)
+                            {
+                                <span class="green-text"> - running</span>
+                            }
+                        </div>
+                        <p>
+                            Po włączeniu, aplikacja symuluje pozycję oraz ruch pojazdu o numerze identyfikacyjnym 1 w
+                            bazie danych.
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="@Url.Action("StartSimulation", "Simulation")">Turn ON</a>
+                        <a href="@Url.Action("StopSimulation", "Simulation")">Turn OFF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <h4>Details:</h4>
         <div>
@@ -82,5 +118,8 @@
             </table>
 
         </div>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="~/Resources/js/materialize.min.js"></script>
 </body>
 </html>
