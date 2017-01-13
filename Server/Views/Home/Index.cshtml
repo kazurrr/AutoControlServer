@@ -72,7 +72,7 @@
                             @item.CreateDate
                         </td>
                         <td>
-                            <button class="btn" type="button" onclick="location.href='@Url.Action("DeleteCar", "Home", new RouteValueDictionary(new { id = @item.CarId }))'">
+                            <button class="btn" type="button" id="DeleteCar_@item.CarId" onclick="location.href='@Url.Action("DeleteCar", "Home", new RouteValueDictionary(new { id = @item.CarId }))'">
                                 Delete
                             </button>
                         </td>
