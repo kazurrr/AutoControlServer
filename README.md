@@ -44,7 +44,7 @@ CreateDate</br>
 /api/errors/getlast/id - return last added error for car with "id"</br>
 
 [POST]</br>
-/api/cars/post - add new error to db</br>
+/api/errors/post - add new error to db</br>
   header: </br>
     Content-Type application/json</br>
   body example:</br>
@@ -77,7 +77,7 @@ CreateDate</br>
 /api/details/getlastdetailforeachcar - return last added detail for each car in DB</br>
 
 [POST]</br>
-/api/cars/post - add new detail to db</br>
+/api/details/post - add new detail to db</br>
   header: </br>
     Content-Type application/json</br>
   body example:</br>
